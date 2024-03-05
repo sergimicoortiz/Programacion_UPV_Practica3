@@ -56,7 +56,7 @@ public class ClothingItem {
 
     @Override
     public String toString() {
-        return "ClothingItem [name=" + name + ", price=" + price + ", size=" + size + "]";
+        return this.name + "         " + this.price + "          " + this.size + "\n";
     }
 
 }

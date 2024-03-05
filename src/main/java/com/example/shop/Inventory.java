@@ -26,10 +26,62 @@ public class Inventory {
             for (int i = 0; i < this.items.length; i++) {
                 if (this.items[i] == null) {
                     this.items[i] = item;
+                    break;
                 }
             }
         } else {
-            // TODO: lanzar exepcion
+            // TODO: lanzar exepcion o mensaje de error
         }
+    }
+
+    public int checkStock(String name, char size) {
+        int cont = 0;
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] != null && this.items[i].getName().equals(name) && this.items[i].getSize() == size) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+
+    public void removeItem(String name, char size) {
+        boolean removed = false;
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] != null &&
+                    !removed &&
+                    this.items[i].getName().equals(name) &&
+                    this.items[i].getSize() == size) {
+                this.items[i] = null;
+                removed = true;
+            }
+            if (removed && this.items[i] != null) {
+                this.items[i - 1] = this.items[i];
+                this.items[i] = null;
+            }
+        }
+
+    }
+
+    public ClothingItem extractItem(String name, char size) {
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] != null && this.items[i].getName().equals(name) && this.items[i].getSize() == size) {
+                ClothingItem itemTmp = this.items[i];
+                this.removeItem(name, size);
+                return itemTmp;
+            }
+        }
+        return null;
+    }
+
+    public String toString() {
+        String msg = "Inventario: => itemLength=" + this.itemLength + ", MAX_SIZE=" + this.MAX_SIZE + "\n";
+        msg += "Nombre          Precio          Talla\n";
+        msg += "-------------------------------------\n";
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null) {
+                msg += (items[i].toString() + "\n");
+            }
+        }
+        return msg;
     }
 }
