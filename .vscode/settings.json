@@ -1,0 +1,7 @@
+{
+    "[java]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "redhat.java",
+        "editor.tabSize": 4
+    }
+}
