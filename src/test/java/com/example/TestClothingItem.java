@@ -11,6 +11,9 @@ public class TestClothingItem {
 	@Test
 	public void shouldAnswerWithTrue() {
 		ClothingItem item1 = new ClothingItem("Camisa", 25.99, 'M');
-		assertTrue((item1 != null) && (item1 instanceof ClothingItem));
+		ClothingItem item2 = new ClothingItem("Camisa", 25.99, 'P'); // default size should be S
+		assertTrue((item1 != null)
+				&& (item1 instanceof ClothingItem)
+				&& item2.getSize() == 'S');
 	}
 }
