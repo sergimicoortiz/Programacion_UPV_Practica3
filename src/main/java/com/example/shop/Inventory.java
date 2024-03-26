@@ -21,7 +21,11 @@ public class Inventory {
         return cont;
     }
 
-    public void addItem(ClothingItem item) throws Exception {
+    public int getMAX_SIZE() {
+        return this.MAX_SIZE;
+    }
+
+    public void addItem(ClothingItem item) {
         if (this.getItemCount() != this.MAX_SIZE) {
             for (int i = 0; i < this.items.length; i++) {
                 if (this.items[i] == null) {
@@ -30,7 +34,8 @@ public class Inventory {
                 }
             }
         } else {
-            throw new Exception("Inventory is full");
+            System.out.println("Inventory is full");
+            // throw new Exception("Inventory is full");
         }
     }
 
