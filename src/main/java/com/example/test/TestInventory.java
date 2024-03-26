@@ -1,4 +1,4 @@
-package com.example;
+package com.example.test;
 
 import com.example.shop.ClothingItem;
 import com.example.shop.Inventory;

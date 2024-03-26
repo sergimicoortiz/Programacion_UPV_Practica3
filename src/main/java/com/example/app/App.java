@@ -2,12 +2,12 @@ package com.example.app;
 
 import java.util.Scanner;
 
-import com.example.TestClothingItem;
-import com.example.TestInventory;
-import com.example.TestSalesRegister;
 import com.example.sales.SalesRegister;
 import com.example.shop.ClothingItem;
 import com.example.shop.Inventory;
+import com.example.test.TestClothingItem;
+import com.example.test.TestInventory;
+import com.example.test.TestSalesRegister;
 
 @SuppressWarnings("unused")
 public class App {
