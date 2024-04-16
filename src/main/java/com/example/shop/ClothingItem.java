@@ -54,6 +54,7 @@ public class ClothingItem {
         }
     }
 
+    @Override
     public String toString() {
         return this.name + "         " + this.price + "          " + this.size + "\n";
     }
