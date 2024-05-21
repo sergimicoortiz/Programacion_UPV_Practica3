@@ -1,9 +1,9 @@
-package test;
+package com.example.test;
 
-import cart.CartItem;
-import cart.LinkedCart;
-import shop.ClothingItem;
-import shop.Inventory;
+import com.example.cart.CartItem;
+import com.example.cart.LinkedCart;
+import com.example.shop.ClothingItem;
+import com.example.shop.Inventory;
 
 public class TestLinkedCart {
 
