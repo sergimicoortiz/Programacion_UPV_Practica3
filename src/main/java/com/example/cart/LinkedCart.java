@@ -1,10 +1,18 @@
 package com.example.cart;
 
 public class LinkedCart {
-    public CartItemNode first;
+    private CartItemNode first;
     private int size = 0;
 
     public LinkedCart() {
+    }
+
+    public CartItemNode getFirst() {
+        return this.first;
+    }
+
+    public void setFirst(CartItemNode first) {
+        this.first = first;
     }
 
     public boolean isEmpty() {
