@@ -1,8 +1,8 @@
-package test;
+package com.example.test;
 
-import shop.ClothingItem;
-import shop.Inventory;
-import sales.*;
+import com.example.shop.ClothingItem;
+import com.example.shop.Inventory;
+import com.example.cart.ShoppingRegister;
 
 public class TestShoppingRegister {
 

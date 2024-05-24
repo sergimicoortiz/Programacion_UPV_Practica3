@@ -8,6 +8,7 @@ import com.example.shop.Inventory;
 import com.example.test.TestClothingItem;
 import com.example.test.TestInventory;
 import com.example.test.TestSalesRegister;
+import com.example.test.TestShoppingRegister;
 import com.example.test.TestLinkedCart;
 
 @SuppressWarnings("unused")
@@ -102,9 +103,10 @@ public class App {
         // TestClothingItem.checkClass(ClothingItem.class);
         // TestInventory.checkClass(Inventory.class);
         // TestSalesRegister.checkSalesRegister();
-        // TestLinkedCart.checkLinkedCart();
+        TestLinkedCart.checkLinkedCart();
+        TestShoppingRegister.checkShoppingRegister();
 
-        menu();
+        // menu();
 
     }
 }

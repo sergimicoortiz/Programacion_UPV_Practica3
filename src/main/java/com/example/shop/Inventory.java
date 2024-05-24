@@ -26,7 +26,7 @@ public class Inventory {
             for (int i = 0; i < this.items.length; i++) {
                 if (this.items[i] == null) {
                     this.items[i] = item;
-                    break;
+                    return;
                 }
             }
         } else {
