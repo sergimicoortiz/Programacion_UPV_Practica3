@@ -7,37 +7,35 @@ public class Inventory {
 
     public Inventory(int MAX_SIZE) {
         this.items = new ClothingItem[MAX_SIZE];
-        this.itemLength = 0; // TODO: cambiar los for de getItem y addItem
+        this.itemLength = 0;
         this.MAX_SIZE = MAX_SIZE;
     }
 
     public int getItemCount() {
-        int cont = 0;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null) {
-                cont++;
+        return this.itemLength;
+    }
+
+    private int getIndex(String name, char size) {
+        for (int i = 0; i <= this.itemLength; i++) {
+            if (this.items[i] != null && this.items[i].getName().equals(name) && this.items[i].getSize() == size) {
+                return i;
             }
         }
-        return cont;
+        return -1;
     }
 
     public void addItem(ClothingItem item) {
-        if (this.getItemCount() != this.MAX_SIZE) {
-            for (int i = 0; i < this.items.length; i++) {
-                if (this.items[i] == null) {
-                    this.items[i] = item;
-                    return;
-                }
-            }
+        if (this.itemLength != this.MAX_SIZE) {
+            this.items[this.itemLength] = item;
+            this.itemLength++;
         } else {
             System.out.println("Inventory is full");
-            // throw new Exception("Inventory is full");
         }
     }
 
     public int checkStock(String name, char size) {
         int cont = 0;
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i <= this.itemLength; i++) {
             if (this.items[i] != null && this.items[i].getName().equals(name) && this.items[i].getSize() == size) {
                 cont++;
             }
@@ -46,40 +44,35 @@ public class Inventory {
     }
 
     public void removeItem(String name, char size) {
-        boolean removed = false;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null &&
-                    !removed &&
-                    this.items[i].getName().equals(name) &&
-                    this.items[i].getSize() == size) {
+        int index = this.getIndex(name, size);
+        if (index == -1) {
+            return;
+        }
+        for (int i = index; i <= this.itemLength; i++) {
+            if (i == this.itemLength) {
                 this.items[i] = null;
-                removed = true;
-            }
-            if (removed && this.items[i] != null) {
-                this.items[i - 1] = this.items[i];
-                this.items[i] = null;
+            } else {
+                this.items[i] = this.items[i + 1];
             }
         }
-
+        this.itemLength--;
     }
 
     public ClothingItem extractItem(String name, char size) {
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null && this.items[i].getName().equals(name) && this.items[i].getSize() == size) {
-                ClothingItem itemTmp = this.items[i];
-                this.removeItem(name, size);
-                return itemTmp;
-            }
+        int index = this.getIndex(name, size);
+        if (index == -1) {
+            return null;
         }
-        return null;
+        ClothingItem item = this.items[index];
+        this.removeItem(name, size);
+        return item;
     }
 
-    @Override
     public String toString() {
         String msg = "Inventario: => itemLength=" + this.itemLength + ", MAX_SIZE=" + this.MAX_SIZE + "\n";
         msg += "Nombre          Precio          Talla\n";
         msg += "-------------------------------------\n";
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i <= this.itemLength; i++) {
             if (items[i] != null) {
                 msg += (items[i].toString() + "\n");
             }
